@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+* AV Dev
+*
+* NOTICE OF LICENSE
+* @author AV Dev Core Team <suporte@avdev.com.br>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_place_after">
+        <observer name="hiper_order_place_after" instance="AVDev\Hiper\Observer\SalesOderPlaceAfter" />
+    </event>
+</config>

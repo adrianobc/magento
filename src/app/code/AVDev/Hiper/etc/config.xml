@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+* AV Dev
+*
+* NOTICE OF LICENSE
+* @author AV Dev Core Team <suporte@avdev.com.br>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <hiper>
+            <general>
+                <cancel_orders>1</cancel_orders>
+            </general>
+        </hiper>
+    </default>
+</config>

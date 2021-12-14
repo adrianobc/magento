@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+* AV Dev
+*
+* NOTICE OF LICENSE
+* @author AV Dev Core Team <suporte@avdev.com.br>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="avdev_hiper_import_update_products" instance="AVDev\Hiper\Cron\ImportUpdateProducts" method="execute">
+            <schedule>*/15 * * * *</schedule>
+        </job>
+        <job name="avdev_hiper_update_orders" instance="AVDev\Hiper\Cron\UpdateOrders" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+        <job name="avdev_hiper_export_orders" instance="AVDev\Hiper\Cron\ExportOrders" method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+    </group>
+</config>

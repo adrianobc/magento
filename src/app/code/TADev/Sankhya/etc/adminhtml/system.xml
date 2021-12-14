@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!--
+/**
+* TA Dev
+*
+* NOTICE OF LICENSE
+* @author TA Dev Core Team <suporte@tatecnologia.com>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tadev" translate="label" sortOrder="410">
+            <label>TA Dev</label>
+        </tab>
+        <section id="sankhya" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Sankhya Integration</label>
+            <tab>tadev</tab>
+            <resource>TADev_Sankhya::sankhya_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="sankhya_end_point" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>End Point</label>
+                    <comment>This field is used to get the end point (URL) of the integration. It is recommended that this field is not changed.</comment>
+                </field>
+                <field id="sankhya_user" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>User Login</label>
+                    <comment>User login used to connect and validates all transitions between your Store and Sankhya API.</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="sankhya_password" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>User Password</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment>This field is used to store user password.</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="sync_point" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Sync Point</label>
+                    <comment>This field is used to get the synchronization point (last update) of the products. It is recommended that this field is not changed.</comment>
+                </field>
+                <field id="cancel_orders" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cancel orders</label>
+                    <comment>If 'Yes', Store Orders will be canceled when the Order is canceled on Sankhya.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="stock_diff_kg" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Stock Protection Kg</label>
+                    <comment>This field is used to determine the protection difference for stock of products type Kg on Sankhya.</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="stock_diff_un" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Stock Protection Un</label>
+                    <comment>This field is used to determine the protection difference for stock of products type Un on Sankhya.</comment>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+            <group id="orders" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Order Status Settings</label>
+                <comment>When the Sankhya sends an event, the Order will be updated to the status related to the event.</comment>
+                <field id="event_order_processing" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Processing</label>
+                    <comment>Recommended status: Processing or any status assigned to the Processing status</comment>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                </field>
+                <field id="event_stock_separation" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Separation of product in stock</label>
+                    <comment>Recommended status: Processing or any status assigned to the Processing status</comment>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                </field>
+                <field id="event_invoice_issue" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Invoice issue</label>
+                    <comment>In this event the Order invoice will be created. Recommended status: Processing or any status assigned to the Processing status</comment>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                </field>
+                <field id="event_delivery_carrier" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delivery to carrier</label>
+                    <comment>In this event, the order shipment will be created. Recommended status: Processing or any status assigned to the Processing status</comment>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

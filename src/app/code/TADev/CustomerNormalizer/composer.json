@@ -1,0 +1,27 @@
+{
+	"name": "ta_dev/customer-normalizer",
+	"description": "TA Dev Module - Customer Normalizer",
+	"config": {
+		"sort-packages": true
+	},
+	"require": {
+		"php": "~7.1.3||~7.2.0||~7.3.0",
+		"lib-libxml": "*",
+		"magento/framework": "102.0.*",
+		"magento/module-customer": "102.0.*"
+	},
+	"type": "magento2-module",
+	"license": [
+		"OSL-3.0",
+		"AFL-3.0"
+	],
+	"autoload": {
+		"files": [
+			"registration.php"
+		],
+		"psr-4": {
+			"TADev\\CustomerNormalizer\\": ""
+		}
+	},
+	"version": "1.0.0"
+}

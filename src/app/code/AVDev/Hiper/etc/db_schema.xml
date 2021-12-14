@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sales_order" resource="sales" engine="innodb" comment="Sales Order">
+        <column xsi:type="int" name="is_exported" padding="11" unsigned="false" nullable="false" identity="false" comment="Is exported to Hiper?"/>
+    </table>
+    <table name="catalog_product_entity" resource="default" engine="innodb" comment="Catalog Category Table">
+        <column xsi:type="int" name="codigo_erp" padding="11" unsigned="false" nullable="false" identity="false" comment="Produtc Cod from ERP"/>
+    </table>
+</schema>

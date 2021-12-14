@@ -1,0 +1,83 @@
+<?php
+
+/**
+* AV Dev
+*
+* NOTICE OF LICENSE
+* @author AV Dev Core Team <suporte@avdev.com.br>
+*/
+?>
+<?php /** @var $block \AVDev\Hiper\Block\Adminhtml\Order\Info */ ?>
+
+<section class="admin__page-section order-view-billing-shipping">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Order Information - Hiper')) ?></span>
+    </div>
+    <?php if ($block->hasHiperOrder()) : ?>
+        <?php $hOrder = $block->getHiperOrderDetails() ?>
+        <div class="admin__page-section-content">
+            <div class="admin__page-section-item order-payment-method">
+                <div class="admin__page-section-item-title">
+                    <span class="title"><?= $block->escapeHtml(__('Hiper Order Code')) ?></span>
+                </div>
+                <div class="admin__page-section-item-content">
+                    <div class="order-payment-method-title"><?= $hOrder->getSalesOrderCode() ?></div>
+                </div>
+            </div>
+            <div class="admin__page-section-item order-shipping-method">
+                <div class="admin__page-section-item-title">
+                    <span class="title"><?= $block->escapeHtml(__('Processing Situation')) ?></span>
+                </div>
+                <div class="admin__page-section-item-content">
+                    <div class="order-payment-method-title"><?= $block->getProcessingStatusLabel() ?></div>
+                </div>
+            </div>
+        </div>
+
+        <?php if ($block->hasEventsOrder()) : ?>
+            <div class="admin__table-wrapper" style="margin-top:2rem;">
+                <table class="data-table admin__table-primary">
+                    <thead>
+                        <tr class="headings">
+                            <?php
+                            $i = 0;
+                            $columns = $block->getEventsOrderColumns();
+                            $lastItemNumber = count($columns);
+                            ?>
+                            <?php foreach ($columns as $columnName => $columnTitle) : ?>
+                                <?php $i++; ?>
+                                <th class="col-<?= $block->escapeHtmlAttr($columnName) ?><?= /* @noEscape */ ($i === $lastItemNumber ? ' last' : '') ?>">
+                                    <span><?= $block->escapeHtml($columnTitle) ?></span>
+                                </th>
+                            <?php endforeach; ?>
+                        </tr>
+                    </thead>
+                    <?php $_events = $block->getEventsOrder(); ?>
+                    <?php $i = 0; foreach ($_events as $_type => $_value) : ?>
+                        <?php $i++; ?>
+                        <tbody class="<?= /* @noEscape */ $i % 2 ? 'even' : 'odd' ?>">
+                            <tr>
+                                <td class="col-event_code_type">
+                                    <?= $_value->codigoDoTipoDeEvento ?>
+                                </td>
+                                <td class="col-event">
+                                    <?= $block->getEventLabel($_value->codigoDoTipoDeEvento) ?>
+                                </td>
+                                <td class="col-date_event">
+                                    <?= $_value->data ?>
+                                </td>
+                                <td class="col-observation">
+                                    <?= $_value->observacao ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        <?php endif; ?>
+    <?php else : ?>
+        <div class="admin__page-section-item-title">
+            <span class="title"><?= $block->escapeHtml(__('Order not integrated.')) ?></span>
+        </div>
+    <?php endif; ?>
+</section>

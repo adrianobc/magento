@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+* TA Dev
+*
+* NOTICE OF LICENSE
+* @author TA Dev Core Team <suporte@tatecnologia.com>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="TADev_CustomerNormalizer"/>
+</config>

@@ -1,0 +1,7 @@
+/*
+!.gitignore
+!/src
+/src/*
+!/src/app
+/src/app/*
+!/src/app/code

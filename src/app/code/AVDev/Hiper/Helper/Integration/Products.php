@@ -73,7 +73,7 @@ class Products extends AbstractHelper
         \Magento\Catalog\Model\ProductRepository $product,
         \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $category,
         \Magento\Framework\App\Config\Storage\WriterInterface $configWriter,
-        TypeListInterface $cacheTypeList,
+        TypeListInterface $cacheTypeList, 
         Pool $cacheFrontendPool
     )
     {
@@ -139,20 +139,20 @@ class Products extends AbstractHelper
         return $this;
     }
 
-    private function getProductObject($sku,$codigo)
+    private function getProductObject($sku) //private function getProductObject($sku,$codigo)
     {
         try {
             $product = $this->product->get($sku);
         } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
             $product = false;
         }
-        if (!$product) {
+        /* if (!$product) {
             try {
                 $product = $this->product->get($codigo);
             } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
                 $product = false;
             }
-        }
+        } */
 
         if (!$product) {
             $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
@@ -165,10 +165,10 @@ class Products extends AbstractHelper
     private function updateIntegrationProducts($products)
     {
         foreach ($products as $hiperProduct) {
-            $product = $this->getProductObject($hiperProduct['id'],$hiperProduct['codigo']); //[id]
+            $product = $this->getProductObject($hiperProduct['id']); //$product = $this->getProductObject($hiperProduct['id'],$hiperProduct['codigo']);
 
-            $product->setSku($hiperProduct['codigo']); // $hiperProduct['id'] || $hiperProduct['codigo']
-            $product->setCodigoErp($hiperProduct['codigo']);
+            $product->setSku($hiperProduct['id']); //$product->setSku($hiperProduct['codigo']);
+            //$product->setCodigoErp($hiperProduct['codigo']);
             $product->setAttributeSetId(4); // Default attribute set id
             $product->setWebsiteIds([1]);
 

@@ -1,0 +1,8 @@
+{
+    "sales_order": {
+        "column": {
+            "is_exported": true
+        }
+    },
+    "catalog_product_entity": []
+}

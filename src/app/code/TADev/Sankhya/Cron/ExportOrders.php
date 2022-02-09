@@ -10,6 +10,7 @@
 namespace TADev\Sankhya\Cron;
 
 use Psr\Log\LoggerInterface;
+use Magento\Framework\App\AreaList;
 use TADev\Sankhya\Helper\Integration;
 
 class ExportOrders

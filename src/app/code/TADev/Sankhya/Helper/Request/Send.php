@@ -73,6 +73,8 @@ class Send extends AbstractHelper
         try {            
             $curlUrl = $this->getEndPoint() . $modulo . $url; //$curlUrl = static::API_REQUEST_URI . static::API_REQUEST_ENDPOINT . $url;
 
+            //$this->logger->info('CurlUrl ' . $curlUrl);
+
             $this->curl->setOption(CURLOPT_RETURNTRANSFER, true);
             $this->curl->setOption(CURLOPT_MAXREDIRS, 0);
             $this->curl->setOption(CURLOPT_TIMEOUT, 50);
@@ -84,6 +86,10 @@ class Send extends AbstractHelper
                 'Accept' => 'application/json',
                 'Content-Length' =>  json_encode(strlen(json_encode($postOrder)))
             ];
+            
+            //$this->logger->log(100,print_r($headers,true));
+            //$this->logger->info('authToken ' . $authToken);
+            
 
             if(!empty($authToken) && !is_array($authToken)){
               $headers['Cookie'] = 'JSESSIONID=' . $authToken . '.master';

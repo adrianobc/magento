@@ -71,6 +71,11 @@ class Products extends AbstractHelper
     protected $cacheFrontendPool;
 
     /**
+     * @var Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    protected $scopeConfig;
+
+    /**
      * SankhyaApiService constructor
      */
     public function __construct(
@@ -81,6 +86,7 @@ class Products extends AbstractHelper
         \Magento\Catalog\Model\ProductRepository $product,
         \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $category,
         \Magento\Framework\App\Config\Storage\WriterInterface $configWriter,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         TypeListInterface $cacheTypeList,
         Pool $cacheFrontendPool
     )
@@ -95,6 +101,7 @@ class Products extends AbstractHelper
         $this->category = $category;
         $this->configWriter = $configWriter;
         $this->cacheTypeList = $cacheTypeList;
+        $this->scopeConfig = $scopeConfig;
         $this->cacheFrontendPool = $cacheFrontendPool;
     }
 

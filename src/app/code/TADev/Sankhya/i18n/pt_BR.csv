@@ -18,6 +18,8 @@
 "Unity","Unidade"
 "Sankhya ID","ID Sankhya"
 "Sync Point","Ponto de Sincronização"
+"This field is used to get the end point (URL) of the integration. It is recommended that this field is not changed.","Este campo é utilizado para definir o endereço (URL) de integração. É recomendável que este campo não seja alterado."
+"User login used to connect and validates all transitions between your Store and Sankhya API.","Login do usuário"
 "This field is used to get the synchronization point (last update) of the products. It is recommended that this field is not changed.","Este campo é utilizado para pegar o ponto de sincronização (última atualização) dos produtos. É recomendável que este campo não seja alterado."
 "No products found after the last sync point.","Nenhum produto encontrado após o último ponto de sincronização."
 "Error generating the token.","Erro ao gerar o token."

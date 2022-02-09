@@ -90,11 +90,13 @@ class Orders extends AbstractHelper
         \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
         \Magento\Sales\Api\OrderStatusHistoryRepositoryInterface $orderStatusRepository,
         \Magento\Framework\Stdlib\DateTime\DateTime $date,
+        //\Magento\Framework\Stdlib\DateTime\DateTime $dtvalid,
         \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezoneInterface
     )
     {
         $this->logger = $logger;
         $this->date = $date;
+        //$this->dtvalid = $dtvalid;
         $this->timezoneInterface = $timezoneInterface;
         $this->authentication = $authentication;
         $this->request = $request;
@@ -271,6 +273,7 @@ class Orders extends AbstractHelper
                 ];
                 
                 $date = date('d/m/Y',strtotime($order->getCreatedAt()));
+                //$dtvalid = date('d/m/Y',strtotime($order->getCreatedAt(). ' + 2 days'));
                 $custid = $this->getCustomer($sessionid,$customerData);               
 
                 $postData = [
@@ -285,6 +288,9 @@ class Orders extends AbstractHelper
                                 ],
                                 "DTNEG" => [
                                     "$" =>  $date
+                                ],
+                                "DTVAL" => [
+                                    "$" =>  date('d/m/Y',strtotime($order->getCreatedAt() . ' + 2 days'))
                                 ],
                                 "CODTIPOPER" => [
                                     "$" => "1005"

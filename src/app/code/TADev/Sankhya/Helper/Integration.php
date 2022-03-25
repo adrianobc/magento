@@ -81,7 +81,7 @@ class Integration extends AbstractHelper
                     //$this->logger->info('Sankhya SessionId: ' . $sessionid);
                     $total = $this->products->getProducts($sessionid);
                     $this->logger->info('Total de produtos atualizados: ' . $total);
-                    $this->authentication->getLogout();
+                    $this->authentication->getLogout($sessionid);
                 } else if ($integrationMethod == \TADev\Sankhya\Model\Integration\Method::PUT_ORDERS) {
                    // $this->orders->putOrders($sessionid);
                    // $this->authentication->getLogout();

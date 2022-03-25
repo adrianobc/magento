@@ -174,7 +174,7 @@ class Authentication extends AbstractHelper
 
     }
 
-    public function getLogout()
+    public function getLogout($sessionid = null)
     {
 
         $postBody = [
@@ -184,7 +184,7 @@ class Authentication extends AbstractHelper
             ];
 
         $response = $this->request->sendRequest('MGE','?serviceName=MobileLoginSP.logout&outputType=json',
-            \Zend\Http\Request::METHOD_POST, '', $postBody
+            \Zend\Http\Request::METHOD_POST, $sessionid, $postBody
         );
         $this->logger->info('LogoutStatus: Logout realizado com sucesso!' );
     }

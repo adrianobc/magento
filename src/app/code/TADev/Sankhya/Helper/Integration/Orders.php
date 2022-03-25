@@ -304,7 +304,7 @@ class Orders extends AbstractHelper
                                 "TIPMOV" => [
                                     "$" => "P"
                                 ],
-                                "NUMPEDIDO2" => [
+                                "AD_NUMPEDWEB" => [
                                     "$" =>  $order->getIncrementId() 
                                 ],
                                 "VLRFRETE" => [

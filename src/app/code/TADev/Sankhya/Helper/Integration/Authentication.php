@@ -148,17 +148,6 @@ class Authentication extends AbstractHelper
         if ($response){
             if ($response['status'] == 0) {
                 $this->logger->info('TADev_LoginStatus: ' .  $response['statusMessage'] . ' ## - Login mal sucedido!!!');
-                /*$this->logger->log(100,print_r($response['tsError'],true));
-                foreach($response['tsError'] as $erroTag => $value){
-                    if ($erroTag == 'tsErrorCode'){
-                        $this->logger->info('TADev_LoginStatus: É ARRAY ' . $value);
-                    }else{
-                        $this->logger->info('TADev_LoginStatus: NÃO É ARRAY ' . $value);
-                    }
-
-                    //$this->logger->log(100,print_r($erroTag,true));
-                 //   $this->logger->info('TADev_LoginStatus: ' .  $erroTag['tsErrorCode']);
-                } */
                 return false;
             } else {
                 foreach($response['responseBody'] as $key => $value){
@@ -186,7 +175,7 @@ class Authentication extends AbstractHelper
         $response = $this->request->sendRequest('MGE','?serviceName=MobileLoginSP.logout&outputType=json',
             \Zend\Http\Request::METHOD_POST, $sessionid, $postBody
         );
-        $this->logger->info('LogoutStatus: Logout realizado com sucesso!' );
+        $this->logger->info('Sankhya SessionId: ' . $sessionid .' ## - LogoutStatus: Logout realizado com sucesso!' );
     }
 
 }

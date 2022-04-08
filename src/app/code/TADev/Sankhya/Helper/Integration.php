@@ -87,7 +87,8 @@ class Integration extends AbstractHelper
                    // $this->authentication->getLogout();
                 } else if ($integrationMethod == \TADev\Sankhya\Model\Integration\Method::GET_ORDERS) {                    
                     // $this->orders->getCustomer($sessionid);
-                      $this->orders->putOrders($sessionid);                     
+                      $this->orders->putOrders($sessionid);
+                      $this->authentication->getLogout($sessionid);                     
                 }
             }
         }

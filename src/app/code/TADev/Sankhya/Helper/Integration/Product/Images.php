@@ -15,6 +15,7 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem\Io\File;
 use Psr\Log\LoggerInterface;
+use Magento\Catalog\Model\ResourceModel\Product\Gallery;
 
 class Images extends AbstractHelper
 {
@@ -44,6 +45,11 @@ class Images extends AbstractHelper
     protected $file;
 
     /**
+     * @var \Magento\Catalog\Model\ResourceModel\Product\Gallery
+     */
+    protected $productGallery;
+
+    /**
      * SankhyaApiService constructor
      */
     public function __construct(
@@ -53,6 +59,7 @@ class Images extends AbstractHelper
         \TADev\Sankhya\Helper\Integration\Product\DeleteDirectory $deleteDirectory,
         DirectoryList $directoryList,
         \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
+        \Magento\Catalog\Model\ResourceModel\Product\Gallery $productGallery,
         File $file
     )
     {
@@ -63,6 +70,7 @@ class Images extends AbstractHelper
         $this->_productRepository = $productRepository;
         $this->directoryList = $directoryList;
         $this->file = $file;
+        $this->productGallery = $productGallery;
     }
 
     public function setProductImages($product,$sessionid)
@@ -97,6 +105,7 @@ class Images extends AbstractHelper
      */
     private function importImage($product, $imageUrl, $imageType = [], $sessionid)
     {
+        //$this->deleteExistingMediaEntries($product);
         $imageData = base64_decode($this->getImage($sessionid,$product->getSku()));
         /** @var string $tmpDir */
         $tmpDir = $this->getProductImageDir($product->getSku());
@@ -164,5 +173,17 @@ class Images extends AbstractHelper
         }
             
 
+    }
+
+    public function deleteExistingMediaEntries($product){
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $imageProcessor = $objectManager->create('Magento\Catalog\Model\Product\Gallery\Processor');
+        $productGallery = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Gallery');
+        $images = $product->getMediaGalleryImages();
+
+        foreach($images as $child) {
+            $productGallery->deleteGallery($child->getValueId());
+            $imageProcessor->removeImage($product, $child->getFile());
+        }
     }
 }

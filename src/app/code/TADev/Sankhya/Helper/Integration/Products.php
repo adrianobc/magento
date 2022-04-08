@@ -320,6 +320,7 @@ class Products extends AbstractHelper
             $product->save();
 
             // Get product images
+            $this->images->deleteExistingMediaEntries($product);
             $this->images->setProductImages($product,$sessionid);
 
             unset($product);
